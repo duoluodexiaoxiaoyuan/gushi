@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>唐诗三百首 - 完整目录</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#8B5CF6',
+            secondary: '#EC4899',
+            accent: '#06B6D4',
+            neutral: '#1F2937',
+            'neutral-light': '#F3F4F6',
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            serif: ['Noto Serif SC', 'serif'],
+          },
+        },
+      }
+    }
+  </script>
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .content-auto {
+        content-visibility: auto;
+      }
+      .text-shadow {
+        text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      }
+      .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+      }
+      .scrollbar-hide {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+    }
+  </style>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@400;500;600;700&display=swap');
+    
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    .poem-card {
+      transition: all 0.3s ease;
+    }
+    
+    .poem-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+    
+    .nav-link {
+      position: relative;
+    }
+    
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: #8B5CF6;
+      transition: width 0.3s ease;
+    }
+    
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 100%;
+    }
+    
+    .bg-gradient-hero {
+      background: linear-gradient(135deg, rgba(139, 92, 246, 0.9) 0%, rgba(236, 72, 153, 0.9) 100%);
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .animate-fade-in {
+      animation: fadeIn 0.6s ease forwards;
+    }
+    
+    .category-item {
+      opacity: 0;
+      animation: fadeIn 0.5s ease forwards;
+    }
+    
+    .category-item:nth-child(1) { animation-delay: 0.1s; }
+    .category-item:nth-child(2) { animation-delay: 0.2s; }
+    .category-item:nth-child(3) { animation-delay: 0.3s; }
+    .category-item:nth-child(4) { animation-delay: 0.4s; }
+    .category-item:nth-child(5) { animation-delay: 0.5s; }
+    .category-item:nth-child(6) { animation-delay: 0.6s; }
+  </style>
+</head>
+<body class="font-sans bg-gray-50 text-neutral">
+  <!-- 导航栏 -->
+  <header class="fixed w-full bg-white/90 backdrop-blur-sm shadow-sm z-50 transition-all duration-300" id="navbar">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <div class="flex items-center">
+          <a href="#" class="flex items-center">
+            <i class="fa fa-book text-primary text-2xl mr-2"></i>
+            <span class="font-serif font-bold text-xl sm:text-2xl text-neutral">唐诗三百首</span>
+          </a>
+        </div>
+        
+        <!-- 桌面导航 -->
+        <nav class="hidden md:flex space-x-8">
+          <a href="#home" class="nav-link text-neutral hover:text-primary font-medium">首页</a>
+          <a href="#categories" class="nav-link text-neutral hover:text-primary font-medium">诗分类</a>
+          <a href="#poets" class="nav-link text-neutral hover:text-primary font-medium">诗人名录</a>
+          <a href="#about" class="nav-link text-neutral hover:text-primary font-medium">关于</a>
+        </nav>
+        
+        <!-- 移动端菜单按钮 -->
+        <div class="md:hidden">
+          <button type="button" id="mobile-menu-button" class="text-neutral hover:text-primary focus:outline-none">
+            <i class="fa fa-bars text-xl"></i>
+          </button>
+        </div>
+      </div>
+      
+      <!-- 移动端导航菜单 -->
+      <div id="mobile-menu" class="md:hidden hidden pb-4">
+        <div class="space-y-3">
+          <a href="#home" class="block px-3 py-2 rounded-md text-base font-medium text-neutral hover:text-primary hover:bg-neutral-light">首页</a>
+          <a href="#categories" class="block px-3 py-2 rounded-md text-base font-medium text-neutral hover:text-primary hover:bg-neutral-light">诗分类</a>
+          <a href="#poets" class="block px-3 py-2 rounded-md text-base font-medium text-neutral hover:text-primary hover:bg-neutral-light">诗人名录</a>
+          <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-neutral hover:text-primary hover:bg-neutral-light">关于</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- 英雄区域 -->
+  <section id="home" class="pt-24 pb-16 sm:pt-32 sm:pb-24 bg-gradient-hero text-white">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mx-auto text-center">
+        <h1 class="font-serif font-bold text-4xl sm:text-5xl md:text-6xl mb-6 text-shadow">唐诗三百首</h1>
+        <p class="text-xl sm:text-2xl opacity-90 mb-8">蘅塘退士编选 · 流传最广的唐诗选本</p>
+        <div class="flex flex-col sm:flex-row justify-center gap-4">
+          <a href="#categories" class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-primary bg-white hover:bg-gray-100 transition-colors duration-200 shadow-lg">
+            浏览诗目 <i class="fa fa-arrow-right ml-2"></i>
+          </a>
+          <a href="#about" class="inline-flex items-center justify-center px-6 py-3 border border-white text-base font-medium rounded-md text-white bg-transparent hover:bg-white/10 transition-colors duration-200">
+            了解更多 <i class="fa fa-info-circle ml-2"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 诗分类区域 -->
+  <section id="categories" class="py-16 bg-white">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="font-serif font-bold text-3xl sm:text-4xl mb-4">诗分类</h2>
+        <p class="text-gray-600 max-w-2xl mx-auto">《唐诗三百首》按诗歌体裁分为六大类，以下是各类别及其代表作品</p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- 五言古诗 -->
+        <div class="category-item poem-card bg-white rounded-xl shadow-md overflow-hidden border border-gray-100">
+          <div class="bg-primary/10 p-6">
+            <h3 class="font-serif font-bold text-xl sm:text-2xl text-primary mb-2">五言古诗</h3>
+            <p class="text-gray-600">共33首</p>
+          </div>
+          <div class="p-6">
+            <ul class="space-y-3 max-h-64 overflow-y-auto scrollbar-hide">
+              <li class="flex items-start">
+                <span class="text-primary mr-2">•</span>
+                <span><span class="font-medium">张九龄</span> - 《感遇·其一》</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-primary mr-2">•</span>
+                <span><span class="font-medium">张九龄</span> - 《感遇·其二》</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-primary mr-2">•</span>
+                <span><span class="font-medium">李白</span> - 《下终南山过斛斯山人宿置酒》</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-primary mr-2">•</span>
+                <span><span class="font-medium">李白</span> - 《月下独酌》</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-primary mr-2">•</span>
+                <span><span class="font-medium">王维</span> - 《春思》</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-primary mr-2">•</span>
+                <span><span class="font-medium">杜甫</span> - 《望岳》</span>
+              </li>
+              <li class="text-center text-gray-500">
+                <span>... 更多作品</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        
+        <!-- 七言古诗 -->
+        <div class="category-item poem-card bg-white rounded-xl shadow-md overflow-hidden border border-gray-100">
+          <div class="bg-secondary/10 p-6">
+            <h3 class="font-serif font-bold text-xl sm:text-2xl text-secondary mb-2">七言古诗</h3>
+            <p class="text-gray-600">共28首</p>
+          </div>
+          <div class="p-6">
+            <ul class="space-y-3 max-h-64 overflow-y-auto scrollbar-hide">
+              <li class="flex items-start">
+                <span class="text-secondary mr-2">•</span>
+                <span><span class="font-medium">陈子昂</span> - 《登幽州台歌》</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-secondary mr-2">•</span>
+                <span><span class="font-medium">李白</span> - 《蜀道难》</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-secondary mr-2">•</span>
+                <span><span class="font-medium">李白</span> - 《将进酒》</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-secondary mr-2">•</span>
+                <span><span class="font-medium">杜甫</span> - 《兵车行》</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-secondary mr-2">•</span>
+                <span><span class="font-medium">杜甫</span> - 《丽人行》</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-secondary mr-2">•</span>
+                <span><span class="font-medium">白居易</span> - 《长恨歌》</span>
+              </li>
+              <li class="text-center text-gray-500">
+                <span>... 更多作品</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        
+        <!-- 五言律诗 -->
+        <div class="category-item poem-card bg-white rounded-xl shadow-md overflow-hidden border border-gray-100">
+          <div class="bg-accent/10 p-6">
+            <h3 class="font-serif font-bold text-xl sm:text-2xl text-accent mb-2">五言律诗</h3>
+            <p class="text-gray-600">共80首</p>
+          </div>
+          <div class="p-6">
+            <ul class="space-y-3 max-h-64 overflow-y-auto scrollbar-hide">
+              <li class="flex items-start">
+                <span class="text-accent mr-2">•</span>
+                <span><span class="font-medium">王勃</span> - 《杜少府之任蜀州》</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-accent mr-2">•</span>
+                <span><span class="font-medium">骆宾王</span> - 《在狱咏蝉·并序》</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-accent mr-2">•</span>
+                <span><span class="font-medium">王湾</span> - 《次北固山下》</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-accent mr-2">•</span>
+                <span><span class="font-medium">李白</span> - 《送友人》</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-accent mr-2">•</span>
+                <span><span class="font-medium">杜甫</span> - 《春望》</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-accent mr-2">•</span>
+                <span><span class="font-medium">王维</span> - 《山居秋暝》</span>
+              </li>
+              <li class="text-center text-gray-500">
+                <span>... 更多作品</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        
+        <!-- 七言律诗 -->
+        <div class="category-item poem-card bg-white rounded-xl shadow-md overflow-hidden border border-gray-100">
+          <div class="bg-primary/10 p-6">
+            <h3 class="font-serif font-bold text-xl sm:text-2xl text-primary mb-2">七言律诗</h3>
+            <p class="text-gray-600">共53首</p>
+          </div>
+          <div class="p-6">
+            <ul class="space-y-3 max-h-64 overflow-y-auto scrollbar-hide">
+              <li class="flex items-start">
+                <span class="text-primary mr-2">•</span>
+                <span><span class="font-medium">崔颢</span> - 《黄鹤楼》</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-primary mr-2">•</span>
+                <span><span class="font-medium">李白</span> - 《登金陵凤凰台》</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-primary mr-2">•</span>
+                <span><span class="font-medium">杜甫</span> - 《蜀相》</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-primary mr-2">•</span>
+                <span><span class="font-medium">杜甫</span> - 《登高》</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-primary mr-2">•</span>
+                <span><span class="font-medium">刘禹锡</span> - 《西塞山怀古》</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-primary mr-2">•</span>
+                <span><span class="font-medium">李商隐</span> - 《锦瑟》</span>
+              </li>
+              <li class="text-center text-gray-500">
+                <span>... 更多作品</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        
+        <!-- 五言绝句 -->
+        <div class="category-item poem-card bg-white rounded-xl shadow-md overflow-hidden border border-gray-100">
+          <div class="bg-secondary/10 p-6">
+            <h3 class="font-serif font-bold text-xl sm:text-2xl text-secondary mb-2">五言绝句</h3>
+            <p class="text-gray-600">共29首</p>
+          </div>
+          <div class="p-6">
+            <ul class="space-y-3 max-h-64 overflow-y-auto scrollbar-hide">
+              <li class="flex items-start">
+                <span class="text-secondary mr-2">•</span>
+                <span><span class="font-medium">王维</span> - 《鹿柴》</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-secondary mr-2">•</span>
+                <span><span class="font-medium">王维</span> - 《竹里馆》</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-secondary mr-2">•</span>
+                <span><span class="font-medium">王维</span> - 《相思》</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-secondary mr-2">•</span>
+                <span><span class="font-medium">李白</span> - 《静夜思》</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-secondary mr-2">•</span>
+                <span><span class="font-medium">孟浩然</span> - 《春晓》</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-secondary mr-2">•</span>
+                <span><span class="font-medium">柳宗元</span> - 《江雪》</span>
+              </li>
+              <li class="text-center text-gray-500">
+                <span>... 更多作品</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        
+        <!-- 七言绝句 -->
+        <div class="category-item poem-card bg-white rounded-xl shadow-md overflow-hidden border border-gray-100">
+          <div class="bg-accent/10 p-6">
+            <h3 class="font-serif font-bold text-xl sm:text-2xl text-accent mb-2">七言绝句</h3>
+            <p class="text-gray-600">共77首</p>
+          </div>
+          <div class="p-6">
+            <ul class="space-y-3 max-h-64 overflow-y-auto scrollbar-hide">
+              <li class="flex items-start">
+                <span class="text-accent mr-2">•</span>
+                <span><span class="font-medium">贺知章</span> - 《回乡偶书》</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-accent mr-2">•</span>
+                <span><span class="font-medium">王之涣</span> - 《凉州词》</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-accent mr-2">•</span>
+                <span><span class="font-medium">王昌龄</span> - 《出塞》</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-accent mr-2">•</span>
+                <span><span class="font-medium">王维</span> - 《送元二使安西》</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-accent mr-2">•</span>
+                <span><span class="font-medium">李白</span> - 《早发白帝城》</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-accent mr-2">•</span>
+                <span><span class="font-medium">杜牧</span> - 《清明》</span>
+              </li>
+              <li class="text-center text-gray-500">
+                <span>... 更多作品</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 诗人名录 -->
+  <section id="poets" class="py-16 bg-neutral-light">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="font-serif font-bold text-3xl sm:text-4xl mb-4">诗人名录</h2>
+        <p class="text-gray-600 max-w-2xl mx-auto">《唐诗三百首》收录了唐代77位诗人的作品，以下是部分主要诗人</p>
+      </div>
+      
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-6">
+        <!-- 诗人卡片 -->
+        <div class="bg-white rounded-lg shadow-sm p-4 text-center hover:shadow-md transition-shadow duration-300">
+          <div class="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3">
+            <i class="fa fa-user text-primary text-2xl"></i>
+          </div>
+          <h3 class="font-medium">李白</h3>
+          <p class="text-sm text-gray-500">约701-762</p>
+        </div>
+        
+        <div class="bg-white rounded-lg shadow-sm p-4 text-center hover:shadow-md transition-shadow duration-300">
+          <div class="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3">
+            <i class="fa fa-user text-primary text-2xl"></i>
+          </div>
+          <h3 class="font-medium">杜甫</h3>
+          <p class="text-sm text-gray-500">712-770</p>
+        </div>
+        
+        <div class="bg-white rounded-lg shadow-sm p-4 text-center hover:shadow-md transition-shadow duration-300">
+          <div class="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3">
+            <i class="fa fa-user text-primary text-2xl"></i>
+          </div>
+          <h3 class="font-medium">王维</h3>
+          <p class="text-sm text-gray-500">701-761</p>
+        </div>
+        
+        <div class="bg-white rounded-lg shadow-sm p-4 text-center hover:shadow-md transition-shadow duration-300">
+          <div class="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3">
+            <i class="fa fa-user text-primary text-2xl"></i>
+          </div>
+          <h3 class="font-medium">孟浩然</h3>
+          <p class="text-sm text-gray-500">689-740</p>
+        </div>
+        
+        <div class="bg-white rounded-lg shadow-sm p-4 text-center hover:shadow-md transition-shadow duration-300">
+          <div class="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3">
+            <i class="fa fa-user text-primary text-2xl"></i>
+          </div>
+          <h3 class="font-medium">王昌龄</h3>
+          <p class="text-sm text-gray-500">约698-757</p>
+        </div>
+        
+        <div class="bg-white rounded-lg shadow-sm p-4 text-center hover:shadow-md transition-shadow duration-300">
+          <div class="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3">
+            <i class="fa fa-user text-primary text-2xl"></i>
+          </div>
+          <h3 class="font-medium">白居易</h3>
+          <p class="text-sm text-gray-500">772-846</p>
+        </div>
+        
+        <div class="bg-white rounded-lg shadow-sm p-4 text-center hover:shadow-md transition-shadow duration-300">
+          <div class="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3">
+            <i class="fa fa-user text-primary text-2xl"></i>
+          </div>
+          <h3 class="font-medium">杜牧</h3>
+          <p class="text-sm text-gray-500">803-852</p>
+        </div>
+        
+        <div class="bg-white rounded-lg shadow-sm p-4 text-center hover:shadow-md transition-shadow duration-300">
+          <div class="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3">
+            <i class="fa fa-user text-primary text-2xl"></i>
+          </div>
+          <h3 class="font-medium">李商隐</h3>
+          <p class="text-sm text-gray-500">约813-858</p>
+        </div>
+        
+        <div class="bg-white rounded-lg shadow-sm p-4 text-center hover:shadow-md transition-shadow duration-300">
+          <div class="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3">
+            <i class="fa fa-user text-primary text-2xl"></i>
+          </div>
+          <h3 class="font-medium">刘禹锡</h3>
+          <p class="text-sm text-gray-500">772-842</p>
+        </div>
+        
+        <div class="bg-white rounded-lg shadow-sm p-4 text-center hover:shadow-md transition-shadow duration-300">
+          <div class="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3">
+            <i class="fa fa-user text-primary text-2xl"></i>
+          </div>
+          <h3 class="font-medium">柳宗元</h3>
+          <p class="text-sm text-gray-500">773-819</p>
+        </div>
+      </div>
+      
+      <div class="mt-10 text-center">
+        <button class="px-6 py-3 bg-white text-primary border border-primary rounded-md hover:bg-primary/5 transition-colors duration-200">
+          查看全部诗人 <i class="fa fa-angle-right ml-1"></i>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 下载区域 -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto bg-gradient-to-r from-primary/5 to-secondary/5 rounded-2xl p-8 sm:p-10 shadow-sm">
+        <div class="flex flex-col md:flex-row items-center">
+          <div class="md:w-1/2 mb-6 md:mb-0 md:pr-8">
+            <h2 class="font-serif font-bold text-2xl sm:text-3xl mb-4">下载完整目录</h2>
+            <p class="text-gray-600 mb-6">获取完整的《唐诗三百首》目录，包含全部77位诗人的311首诗作，方便离线查阅和研究。</p>
+            <div class="flex flex-col sm:flex-row gap-4">
+              <a href="#" class="inline-flex items-center justify-center px-5 py-2.5 bg-primary text-white rounded-md hover:bg-primary/90 transition-colors duration-200 shadow-md">
+                <i class="fa fa-download mr-2"></i> 下载PDF
+              </a>
+              <a href="#" class="inline-flex items-center justify-center px-5 py-2.5 bg-white text-neutral border border-gray-300 rounded-md hover:bg-gray-50 transition-colors duration-200">
+                <i class="fa fa-file-text-o mr-2"></i> 下载文本
+              </a>
+            </div>
+          </div>
+          <div class="md:w-1/2 flex justify-center">
+            <img src="https://picsum.photos/id/24/500/300" alt="唐诗三百首目录预览" class="rounded-lg shadow-md max-w-full h-auto" style="max-height: 250px;">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 关于区域 -->
+  <section id="about" class="py-16 bg-neutral-light">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="font-serif font-bold text-3xl sm:text-4xl mb-6 text-center">关于《唐诗三百首》</h2>
+        <div class="prose prose-lg max-w-none">
+          <p class="mb-4">《唐诗三百首》是一部流传甚广的唐诗选集，由清代乾隆年间的蘅塘退士（孙洙）编选。孙洙（1711-1778），字临西，号蘅塘退士，江苏无锡人。他有感于当时流行的《千家诗》选诗不精，体裁不备，于是以"因专就唐诗中脍炙人口之作，择其尤要者"为标准，编成此书。</p>
+          
+          <p class="mb-4">《唐诗三百首》共选入唐代诗人77位，诗311首，分为五言古诗、七言古诗、五言律诗、七言律诗、五言绝句、七言绝句六类。所选诗作题材广泛，风格多样，既有反映社会现实的，也有描绘自然景物的，还有抒发个人情怀的，基本展现了唐诗的全貌。</p>
+          
+          <p class="mb-4">书名中的"三百首"是取法于《诗经》的篇数，并非实际的精确数字。这部选集自问世以来，因其选诗精当、体裁完备、通俗易懂而广受欢迎，成为流传最广的唐诗选本之一，对后世产生了深远影响。</p>
+          
+          <p>今天，《唐诗三百首》不仅是学习唐诗的入门读物，也是了解中国传统文化的重要窗口。它所收录的许多诗篇，如李白的《静夜思》、杜甫的《春望》、王维的《山居秋暝》等，早已成为家喻户晓的千古名篇。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 页脚 -->
+  <footer class="bg-neutral text-white py-12">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div>
+          <h3 class="font-serif font-bold text-xl mb-4">唐诗三百首</h3>
+          <p class="text-gray-400 mb-4">蘅塘退士编选的唐诗经典选本，收录77位诗人的311首诗作。</p>
+          <div class="flex space-x-4">
+            <a href="https://sa6z03i7sec.feishu.cn/wiki/WWJDwfdeaiyOLxktTbfccKS7nJc?from=from_copylink" class="text-gray-400 hover:text-white transition-colors duration-200">
+              <i>点击跳转至飞书链接</i>
+            </a>
+            <a href="./deepseek.html" class="text-gray-400 hover:text-white transition-colors duration-200">
+              <i>点击跳转古风古诗网站</i>
+            </a>
+            <!-- <a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">
+              <i class="fa fa-instagram"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">
+              <i class="fa fa-github"></i>
+            </a> -->
+          </div>
+        </div>
+        
+        <div>
+          <h3 class="font-bold text-lg mb-4">快速链接</h3>
+          <ul class="space-y-2">
+            <li><a href="#home" class="text-gray-400 hover:text-white transition-colors duration-200">首页</a></li>
+            <li><a href="#categories" class="text-gray-400 hover:text-white transition-colors duration-200">诗分类</a></li>
+            <li><a href="#poets" class="text-gray-400 hover:text-white transition-colors duration-200">诗人名录</a></li>
+            <li><a href="#about" class="text-gray-400 hover:text-white transition-colors duration-200">关于</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="font-bold text-lg mb-4">联系我们</h3>
+          <ul class="space-y-2">
+            <li class="flex items-start">
+              <i class="fa fa-envelope-o text-gray-400 mt-1 mr-3"></i>
+              <span class="text-gray-400">微信公众号: 讨生活杂货铺</span>
+            </li>
+            <!-- <li class="flex items-start">
+              <i class="fa fa-phone text-gray-400 mt-1 mr-3"></i>
+              <span class="text-gray-400">+86 123 4567 8910</span>
+            </li> -->
+            <!-- <li class="flex items-start">
+              <i class="fa fa-map-marker text-gray-400 mt-1 mr-3"></i>
+              <span class="text-gray-400">北京市海淀区中关村大街1号</span>
+            </li> -->
+          </ul>
+        </div>
+      </div>
+      
+      <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+        <p>&copy; 2025 唐诗三百首目录 | 版权所有</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 返回顶部按钮 -->
+  <button id="back-to-top" class="fixed bottom-8 right-8 bg-primary text-white rounded-full p-3 shadow-lg opacity-0 invisible transition-all duration-300 hover:bg-primary/90 focus:outline-none">
+    <i class="fa fa-arrow-up"></i>
+  </button>
+
+  <!-- JavaScript -->
+  <script>
+    // 移动端菜单切换
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    mobileMenuButton.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+    
+    // 导航栏滚动效果
+    const navbar = document.getElementById('navbar');
+    
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        navbar.classList.add('shadow-md');
+        navbar.classList.remove('shadow-sm');
+      } else {
+        navbar.classList.remove('shadow-md');
+        navbar.classList.add('shadow-sm');
+      }
+    });
+    
+    // 返回顶部按钮
+    const backToTopButton = document.getElementById('back-to-top');
+    
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backToTopButton.classList.remove('opacity-0', 'invisible');
+        backToTopButton.classList.add('opacity-100', 'visible');
+      } else {
+        backToTopButton.classList.add('opacity-0', 'invisible');
+        backToTopButton.classList.remove('opacity-100', 'visible');
+      }
+    });
+    
+    backToTopButton.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+    
+    // 导航链接激活状态
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('.nav-link');
+    
+    window.addEventListener('scroll', () => {
+      let current = '';
+      
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        
+        if (window.scrollY >= (sectionTop - 100)) {
+          current = section.getAttribute('id');
+        }
+      });
+      
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+          link.classList.add('active');
+        }
+      });
+    });
+    
+    // 初始化动画
+    document.addEventListener('DOMContentLoaded', () => {
+      const categoryItems = document.querySelectorAll('.category-item');
+      categoryItems.forEach(item => {
+        item.style.opacity = '0';
+      });
+      
+      setTimeout(() => {
+        categoryItems.forEach((item, index) => {
+          item.style.opacity = '1';
+          item.style.transform = 'translateY(0)';
+          item.style.transition = `opacity 0.5s ease ${index * 0.1}s, transform 0.5s ease ${index * 0.1}s`;
+        });
+      }, 300);
+    });
+  </script>
+</body>
+</html>
